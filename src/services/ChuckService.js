@@ -1,13 +1,10 @@
-// import chucknorris from 'chucknorris-io'
-const Chuck  = require('chucknorris-io'),
-      client = new Chuck();
-
-
+const Chuck = require('chucknorris-io'),
+  client = new Chuck();
 
 class ChuckService {
-    getRandomJoke() {
-        return client.getRandomJoke();
-    }
+  getRandomJoke() {
+    return client.getRandomJoke().then((response) => response);
+  }
 }
 
 const chuck = new ChuckService();

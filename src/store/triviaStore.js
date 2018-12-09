@@ -1,6 +1,5 @@
+// const triviaStore {
 
-const triviaStore = new Vuex.Store({
+// };
 
-});
-
-export default triviaStore
+// export default triviaStore

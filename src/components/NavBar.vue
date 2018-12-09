@@ -1,5 +1,5 @@
 <template>
-     <div>
+  <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <router-link to="/trivia" class="navbar-brand">Trivia App</router-link>
@@ -15,16 +15,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <router-link to="/chuck" >Chuck</router-link>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Services</a>
-            </li>
+          <ul class="navbar-nav">
+            <router-link class="navbar-brand" to="/chuck">Chuck</router-link>
           </ul>
         </div>
       </div>
@@ -33,11 +25,8 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
-
 </style>
