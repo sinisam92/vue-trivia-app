@@ -2,27 +2,36 @@
   <div class="container">
     <div>
       <img class="chuck-image" src="https://pics.me.me/chuck-norri-17239471.png">
-      <p>{{ joke.value }}</p>
-      <button @click="getNewJoke" class="btn btn-primary">Get New Joke</button>
+      <form @submit.prevent="getNewJoke(category)">
+        <input type="text" v-model="category">
+        <button type="submit" class="btn btn-primary">Get New Joke</button>
+      </form>
+      <h2>{{ joke.value }}</h2>
       <a :href="joke.sourceUrl" class="btn btn-info">See source</a>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
+  data() {
+    return {
+      category: ""
+    };
+  },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.$store.dispatch("getRandomJoke");
+      vm.$store.dispatch("getNewJoke");
     });
   },
   methods: {
-    getNewJoke() {}
+    ...mapActions(["getNewJoke"])
   },
   computed: {
     ...mapGetters({
-      joke: "randomJoke"
+      joke: "randomJoke",
+      category: "category"
     })
   }
 };
