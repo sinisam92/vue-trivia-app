@@ -6,7 +6,9 @@ import Vuex from 'vuex';
 import ChuckApp from './components/ChuckApp.vue';
 import chuckStore from './store/chuckStore';
 import triviaStore from './store/triviaStore';
+import VModal from 'vue-js-modal';
 
+Vue.use(VModal);
 Vue.use(Vuex);
 Vue.use(VueRouter);
 

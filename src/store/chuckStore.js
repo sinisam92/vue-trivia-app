@@ -1,6 +1,6 @@
 import Chuck from '../services/ChuckService';
 
-const chuckStore = {
+export default {
   state: {
     randomJoke: '',
     category: []
@@ -9,15 +9,14 @@ const chuckStore = {
     async getNewJoke({ commit }, category) {
       try {
         commit('SET_RANDOM_JOKE', await Chuck.getRandomJoke(category));
-      } catch (error) {}
+      } catch (error) {
+        error;
+      }
     }
   },
   mutations: {
     SET_RANDOM_JOKE(state, joke) {
       state.randomJoke = joke;
-    },
-    GET_CATEGORY(state, category) {
-      state.category = category;
     }
   },
   getters: {
@@ -25,5 +24,3 @@ const chuckStore = {
     category: (state) => state.category
   }
 };
-
-export default chuckStore;
