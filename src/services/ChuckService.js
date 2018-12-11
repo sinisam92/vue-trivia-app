@@ -2,8 +2,13 @@ const Chuck = require('chucknorris-io'),
   client = new Chuck();
 
 class ChuckService {
-  getRandomJoke(category) {
-    return client.getRandomJoke(category).then((response) => response);
+  async getRandomJoke(category) {
+    const response = await client.getRandomJoke(category);
+    return response;
+  }
+  async getJokeCategories() {
+    const response = await client.getCategories();
+    return response;
   }
 }
 

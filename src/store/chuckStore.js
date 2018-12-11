@@ -2,8 +2,7 @@ import Chuck from '../services/ChuckService';
 
 export default {
   state: {
-    randomJoke: '',
-    category: []
+    randomJoke: ''
   },
   actions: {
     async getNewJoke({ commit }, category) {
@@ -20,7 +19,6 @@ export default {
     }
   },
   getters: {
-    randomJoke: (state) => state.randomJoke,
-    category: (state) => state.category
+    randomJoke: (state) => state.randomJoke
   }
 };

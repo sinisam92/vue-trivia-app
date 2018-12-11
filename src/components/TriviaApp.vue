@@ -4,10 +4,6 @@
       Trivia
       <strong>Pop Quizzzzz</strong>
     </h1>
-    <h5>
-      Click on the question to
-      <strong>POP</strong> the answer
-    </h5>
     <ul class="list-group list-group-flush">
       <li v-for="t in trivia" :key="t.id" class="list-group-item">
         {{t.question + '?'}}
@@ -17,8 +13,17 @@
         >Click for Answer</button>
       </li>
     </ul>
-
-    <!-- <div>{{ JSON.stringify(trivia) }}</div> -->
+    <div class="container-categories">
+      <h3>Select what category questions you want</h3>
+      <ul v-for="category in triviaCategory" :key="category.id">
+        <div class="category-buttons">
+          <button
+            @click="getTriviaByCategory(category.id)"
+            class="btn btn-outline-primary"
+          >{{ category.title }}</button>
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -27,14 +32,21 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   created() {
     this.getRandomTrivia();
+    this.getTriviaCategories();
+    this.getTriviaByCategory();
   },
   computed: {
     ...mapGetters({
-      trivia: "randomTrivia"
+      trivia: "randomTrivia",
+      triviaCategory: "triviaCategory"
     })
   },
   methods: {
-    ...mapActions(["getRandomTrivia"]),
+    ...mapActions([
+      "getRandomTrivia",
+      "getTriviaCategories",
+      "getTriviaByCategory"
+    ]),
 
     answerAlert(answer) {
       alert(answer);
@@ -44,10 +56,14 @@ export default {
 </script>
 
 <style scoped>
-button {
+.btn-outline-dark {
   float: right;
 }
-h5,
+.category-buttons {
+  display: inline;
+  margin-right: 0;
+  padding-right: 0;
+}
 h1 {
   font-family: "Kalam", cursive;
 }

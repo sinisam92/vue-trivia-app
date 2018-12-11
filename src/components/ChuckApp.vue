@@ -22,7 +22,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.$store.dispatch("getNewJoke");
+      vm.getNewJoke();
     });
   },
   methods: {
@@ -30,8 +30,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      joke: "randomJoke",
-      category: "category"
+      joke: "randomJoke"
     })
   }
 };
